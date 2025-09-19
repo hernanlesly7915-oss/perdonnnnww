@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>¿ME PERDONASSSSS?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: Arial, sans-serif;
+  background: #fcfcfc;
+  transition: background 0.5s ease;
+}
+.contenedor {
+  margin: auto;
+  width: 900px;
+  margin-top: 150px;
+  text-align: center;
+  position: relative;
+}
+.titulo h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #222;
+  transition: color 0.5s ease;
+}
+.opciones p {
+  background: black;
+  display: inline-block;
+  padding: 12px 20px;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: bold;
+  position: absolute;
+  transition: top 0.4s, left 0.4s;
+  user-select: none;
+  cursor: pointer;
+}
+p.p1 { top: 300px; left: 350px; }
+p.p2 { top: 300px; left: 500px; }
+p.p2:hover { background: gray; }
+#si {
+  background:#ff4d6d;
+  left: 200px;
+  top: 100px;
+  width: 500px;
+  color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  display: none;
+  position: absolute;
+  font-size: 25px;
+  text-align: center;
+}
+.decoracion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/2107/2107952.png'),
+                    url('https://cdn-icons-png.flaticon.com/512/833/833472.png');
+  background-repeat: repeat;
+  background-size: 80px 80px;
+  opacity: 0.1;
+}
+</style>
+</head>
+<body>
+
+<div class="decoracion"></div>
+
+<div class="contenedor">
+  <div class="titulo">
+    <h1>¿CAMILAAAAAAAAAAAAAAAAAAAAAAAA ME PERDONASSSS? 🥹</h1>
+  </div>
+  <div class="opciones">
+    <p class="p1">No</p>
+    <p class="p2">Sí</p>
+    <h2 id="si">✨ SABÍA QUE DIRÍAS QUE SÍ ✨</h2>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  const btnNo = document.querySelector('.p1');
+  const btnSi = document.querySelector('.p2');
+  const titulo = document.querySelector('.titulo h1');
+  const siMsg = document.getElementById('si');
+  let clicsNo = 0;
+  let activarEscape = false;
+
+  function moverBoton(){
+    siMsg.style.display = 'none';
+    const nuevoTop = Math.random() * 400 + 100;
+    const nuevoLeft = Math.random() * 600 + 100;
+    btnNo.style.top = nuevoTop + 'px';
+    btnNo.style.left = nuevoLeft + 'px';
+  }
+
+  btnNo.addEventListener('mouseenter', function(){
+    if(activarEscape){
+      moverBoton();
+    }
+  });
+
+  btnNo.addEventListener('click', function(){
+    siMsg.style.display = 'none';
+    clicsNo++;
+    if(clicsNo === 1){
+      titulo.textContent = "¿Estás segura? 🥹";
+      document.body.style.background = '#ffe066';
+    } else if(clicsNo === 2){
+      titulo.textContent = "¿Segurísimaaaa? 🥹";
+      document.body.style.background = '#ffb347';
+    } else if(clicsNo === 3){
+      activarEscape = true;
+      moverBoton();
+      titulo.textContent = "Ándale perdóname siiii 🙏";
+      document.body.style.background = '#ff6f91';
+    }
+  });
+
+  btnSi.addEventListener('click', function(){
+    siMsg.style.display = 'block';
+    document.body.style.background = '#ff4d6d';
+    titulo.textContent = "Gracias mi love ❤️";
+  });
+
+});
+</script>
+
+</body>
+</html>
